@@ -1,0 +1,12 @@
+admin.fecolor:
+  css:
+    theme:
+      css/fecolor.css: {}
+
+ckeditor5.fecolor:
+  js:
+    js/build/fecolor.js: { minified: true }
+  dependencies:
+    - core/ckeditor5
+  css:
+    theme: {}

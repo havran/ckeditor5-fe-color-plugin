@@ -1,0 +1,33 @@
+{
+  "name": "ckeditor5-fe-color-plugin",
+  "private": true,
+  "version": "0.0.0",
+  "description": "CKEditor5 FeColor plugin.",
+  "scripts": {
+    "watch": "yarn manifest && webpack --mode development --watch",
+    "build": "yarn manifest && webpack",
+    "manifest": "node ./js/scripts/manifest.js",
+    "w": "run(){ webpack --mode development --watch --env plugin=\"$1\"; }; run",
+    "b": "run(){ webpack --env plugin=\"$1\"; }; run"
+  },
+  "devDependencies": {
+    "@ckeditor/ckeditor5-dev-utils": "^53.2.0",
+    "@ckeditor/ckeditor5-core": "~45.2.2",
+    "@ckeditor/ckeditor5-engine": "~45.2.2",
+    "@ckeditor/ckeditor5-html-support": "~45.2.2",
+    "@ckeditor/ckeditor5-link": "~45.2.2",
+    "@ckeditor/ckeditor5-ui": "~45.2.2",
+    "@ckeditor/ckeditor5-utils": "~45.2.2",
+    "@ckeditor/ckeditor5-widget": "~45.2.2",
+    "@types/node": "^24.5.1",
+    "ckeditor5": "^45.2.2",
+    "css-loader": "^7.1.2",
+    "raw-loader": "^4.0.2",
+    "terser-webpack-plugin": "^5.3.14",
+    "ts-loader": "^9.5.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2",
+    "webpack": "^5.101.3",
+    "webpack-cli": "^6.0.1"
+  }
+}

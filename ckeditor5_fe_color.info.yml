@@ -1,0 +1,7 @@
+name: CKEditor5 FeColor Plugin
+type: module
+description: 'Provides an easy interface for selecting text colors with wysiwyg editors.'
+package: CKEditor 5 Custom
+core_version_requirement: '>=10.1'
+dependencies:
+  - drupal:ckeditor5

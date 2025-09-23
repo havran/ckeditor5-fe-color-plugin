@@ -1,0 +1,14 @@
+ckeditor5_fe_color_fecolor:
+  ckeditor5:
+    plugins:
+      - fecolor.FeColor
+  drupal:
+    label: Fe Font Color
+    library: ckeditor5_fe_color/ckeditor5.fecolor
+    admin_library: ckeditor5_fe_color/admin.fecolor
+    class: Drupal\ckeditor5_fe_color\Plugin\CKEditor5Plugin\FeColor
+    toolbar_items:
+      fecolor:
+        label: Fe Font Color
+    elements:
+      - <span>
