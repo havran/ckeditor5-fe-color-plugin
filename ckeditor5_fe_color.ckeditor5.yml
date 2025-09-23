@@ -2,6 +2,17 @@ ckeditor5_fe_color_fecolor:
   ckeditor5:
     plugins:
       - fecolor.FeColor
+    config:
+      fecolor:
+        colors:
+          - label: Black
+            color: '#000000'
+            class: 'color-black'
+          - label: White
+            color: '#FFFFFF'
+            class: 'color-white'
+            options:
+              hasBorder: true
   drupal:
     label: Fe Font Color
     library: ckeditor5_fe_color/ckeditor5.fecolor
@@ -12,3 +23,4 @@ ckeditor5_fe_color_fecolor:
         label: Fe Font Color
     elements:
       - <span>
+      - <span class="color-black color-white">

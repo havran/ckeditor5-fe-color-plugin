@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Drupal\ckeditor5_fe_color\Plugin\CKEditor5Plugin;
 
+use Drupal\ckeditor5\Plugin\CKEditor5PluginConfigurableInterface;
 use Drupal\ckeditor5\Plugin\CKEditor5PluginDefault;
 use Drupal\editor\EditorInterface;
 
@@ -48,7 +49,10 @@ class FeColor extends CKEditor5PluginDefault {
      *
      */
 
-    $static_plugin_config['fecolor']['colors'] = [];
+    // @ToDo: Now are colors defined in fe_theme.module in function
+    //        fe_theme_editor_js_settings_alter(), per profile theme.
+    //        Static config come from file ckeditor5_fe_color.plugin.yml.
+
     return $static_plugin_config;
   }
 

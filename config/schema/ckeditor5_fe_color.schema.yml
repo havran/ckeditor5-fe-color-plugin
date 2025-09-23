@@ -15,27 +15,10 @@ ckeditor5.plugin.ckeditor5_fe_color:
             type: string
           class:
             type: string
-    font_color_columns:
-      type: integer
-      label: 'Font color columns'
-      constraints:
-        Range:
-          min: 1
-    font_color_document_colors:
-      type: integer
-      label: 'Font color document colors'
-      constraints:
-        Range:
-          min: 0
-    bg_color_columns:
-      type: integer
-      label: 'Background color columns'
-      constraints:
-        Range:
-          min: 1
-    bg_color_document_colors:
-      type: integer
-      label: 'Background color document colors'
-      constraints:
-        Range:
-          min: 0
+          options:
+            type: mapping
+            mapping:
+              hasBorder:
+                type: boolean
+                label: 'Has border'
+                default: false

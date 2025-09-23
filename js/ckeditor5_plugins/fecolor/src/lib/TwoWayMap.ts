@@ -1,3 +1,4 @@
+// A utility class for a two-way map, allowing lookups in both directions.
 export default class TwoWayMap<K, V> {
   private forwardMap = new Map<K, V>();
   private reverseMap = new Map<V, K>();

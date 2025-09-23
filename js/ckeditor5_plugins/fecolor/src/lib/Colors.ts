@@ -12,6 +12,7 @@ export type FeColorConfig = {
   colors: Array<FeColor>;
 }
 
+// Get array of color classes from configuration.
 export const getFeColorClasses = (config: FeColorConfig): string[] => {
   const classes: string[] = [];
   config.colors.forEach((color) => {
@@ -20,6 +21,7 @@ export const getFeColorClasses = (config: FeColorConfig): string[] => {
   return classes;
 }
 
+// Get two-way map of color values and classes from configuration.
 export const getFeColorMap = (config: FeColorConfig): TwoWayMap<string, string> => {
   const map = new TwoWayMap<string, string>();
   config.colors.forEach((color) => {

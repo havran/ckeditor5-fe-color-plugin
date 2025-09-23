@@ -25,8 +25,10 @@ export class FeColorEditing extends Plugin {
     const mapColorToClass = getFeColorMap(config);
     const classes = getFeColorClasses(config);
 
-    // Conversion from a view element to a model attribute
-    // Register one converter per class
+    // Conversion from a view element to a model attribute.
+    // Register one converter per class.
+    // It is important to use same 'classString' for mapping both ways, to
+    // proper converting from view to model.
     classes.forEach( classString => {
       conversion.for( 'upcast' ).elementToAttribute(
         {
