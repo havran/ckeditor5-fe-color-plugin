@@ -1,6 +1,9 @@
 # CKEditor5 FE Color
 
-Provides custom color palettes and color configuration for CKEditor 5 in Drupal.
+Provides custom color palettes and color configuration for CKEditor 5 in Drupal. Lot 
+of inspiration, how to do things, is taken from repo https://github.com/CuBoulder/ucb_ckeditor_plugins/tree/main
+
+Thank you!
 
 ## INTRODUCTION
 
