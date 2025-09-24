@@ -1,33 +1,41 @@
-# CKEditor5 FE Color
+# CKEditor5 FE Color Plugin
 
-Provides custom color palettes and color configuration for CKEditor 5 in Drupal. Lot 
-of inspiration, how to do things, is taken from repo https://github.com/CuBoulder/ucb_ckeditor_plugins/tree/main
+A CKEditor 5 plugin for Drupal that provides customizable frontend color palettes, enabling content editors to use consistent brand colors across your site.
 
-Thank you!
+Inspired by [ucb_ckeditor_plugins](https://github.com/CuBoulder/ucb_ckeditor_plugins/tree/main).  
+Thank you to the original authors!
 
-## INTRODUCTION
+---
 
-The CKEditor5 FE Color module extends CKEditor 5 functionality by providing
-predefined frontend color palettes. This allows content editors to use
-consistent brand colors throughout the site.
+## 🚀 Introduction
 
-## REQUIREMENTS
+**CKEditor5 FE Color** extends Drupal’s CKEditor 5 integration with predefined, configurable color palettes.  
+Content editors can easily apply branded colors, ensuring visual consistency for your organization.
 
-This module requires the following modules:
+---
 
-- `CKEditor 5 (Core)`
+## 📦 Requirements
 
-## CONFIGURATION
+- **CKEditor 5 (Core module)** must be enabled.
 
-After module is enabled and CKEditor 5 is set up, the FeColor plugin should
-be available in text formats configuration. Drag and drop the FeColor button
-to the active toolbar.
+---
 
-Color configuration is now possible only from code. No UI is provided.
+## ⚙️ Configuration
 
-In current state some default colors are configured in the module itself,
-in file `ckeditor5_fe_color.ckeditor5.yml` in key
-`ckeditor5_fe_color_fecolor.ckeditor5.config.fecolor.colors`:
+### 1. Enable the Plugin
+
+- Install and enable this module.
+- Ensure CKEditor 5 is set up for your desired text format.
+- In Drupal’s text format configuration, drag the **FeColor** button into your CKEditor 5 toolbar.
+
+### 2. Color Palette Configuration
+
+- **Currently, all color settings are code-based** (no UI yet).
+- Default palettes are set in `ckeditor5_fe_color.ckeditor5.yml` under the key  
+  `ckeditor5_fe_color_fecolor.ckeditor5.config.fecolor.colors`.
+
+<details>
+<summary>Example YAML Color Configuration</summary>
 
 ```yml
 ckeditor5_fe_color_fecolor:
@@ -57,10 +65,18 @@ ckeditor5_fe_color_fecolor:
       - <span>
       - <span class="color-black color-white">
 ```
+</details>
 
-You can override them, but better to do it in a custom module. To add custom
-colors or modify the existing palette, you can implement the following
-hooks:
+---
+
+### 3. Customizing Colors
+
+**Best practice:**  
+Override or extend palettes in a custom module, not in this module directly.
+
+#### Hooks for Customization
+
+Add your colors via Drupal hooks in your custom module:
 
 ```php
 <?php
@@ -147,6 +163,9 @@ function __mymodule_colors_classes(): array {
   return array_column(__mymodule_colors(), 'class');
 }
 ```
+
+#### Add Custom CSS
+
 And in you `mymodule.info.yml` file provide CSS file(s):
 
 ```yml
@@ -161,7 +180,7 @@ ckeditor5-stylesheets:
   - //fonts.googleapis.com/icon?family=Material+Icons   # Optional, if you use Material Icons
 ```
 
-And example `css/ckeditor5.css` file:
+Example `css/ckeditor5.css` file:
 
 ```css
 :root {
@@ -176,16 +195,37 @@ And example `css/ckeditor5.css` file:
 }
 ```
 
-## USAGE
+---
 
-- When editing content, the CKEditor 5 color picker will display the custom
-  frontend color palette.
-- Do not forget implement corresponding CSS classes in your theme to apply
-  the colors in CKEditor. Recommended way is use to CSS variables for colors.
-- Colors are defined in the module and can be extended by site builders.
+## ✨ Usage
 
-## TROUBLESHOOTING
+- When editing content, the CKEditor 5 color picker displays your custom palette.
+- Ensure your theme provides corresponding CSS classes for colors.
+- Use CSS variables (`--color-*`) for easy color management.
 
-- Clear Drupal cache after installation: drush cr
-- Ensure CKEditor 5 is properly configured for your text format
-- Check browser console for JavaScript errors
+---
+
+## 🛠️ Troubleshooting
+
+- **Clear cache:** Run `drush cr` after installation or configuration changes.
+- **Check text format:** Make sure CKEditor 5 is enabled for your text format.
+- **Debug:** Inspect browser console for JS errors.
+
+---
+
+## 📝 Notes
+
+- UI configuration for colors is not available yet—contributions welcome!
+- Site builders can extend color palettes and styles via custom modules.
+
+---
+
+## 📚 Resources
+
+- [CKEditor 5 Documentation](https://ckeditor.com/docs/ckeditor5/latest/)
+- [Drupal CKEditor 5 Guide](https://www.drupal.org/docs/core-modules-and-themes/core-modules/ckeditor5-module)
+- [ucb_ckeditor_plugins inspiration](https://github.com/CuBoulder/ucb_ckeditor_plugins/tree/main)
+
+---
+
+**Enjoy consistent, branded editing with CKEditor5 FE Color!**
