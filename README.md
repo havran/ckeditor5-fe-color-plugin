@@ -213,6 +213,19 @@ Example `css/ckeditor5.css` file:
 
 ---
 
+## 🛠️ Development
+
+Requirements for JavaScript plugin development:
+
+- NodeJS
+- yarn
+
+1. Install dependencies: `yarn install`
+2. Development: `yarn watch` or `yarn w fecolor`
+3. Build: `yarn build` or `yarn b fecolor`
+
+---
+
 ## 📝 Notes
 
 - UI configuration for colors is not available yet—contributions welcome!
