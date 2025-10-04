@@ -1,0 +1,94 @@
+<?php
+
+use Drupal\ckeditor5\Plugin\CKEditor5PluginDefinition;
+use Drupal\Component\Utility\UrlHelper;
+
+/**
+ * Implements hook_library_info_alter().
+ *
+ * This add CKEditor 5 stylesheets CSS files to the editor. You can simply
+ * add your custom CSS file(s) to your module and provide path(s) in
+ * your `mymodule.info.yml` file in `ckeditor5-stylesheets` property.
+ */
+function ckeditor5_fe_color_config_example_library_info_alter(&$libraries, $extension) {
+  $module = 'ckeditor5_fe_color_config_example';
+  if ($extension === 'ckeditor5') {
+    // Add paths to stylesheets specified by a modules's ckeditor5-stylesheets
+    // config property.
+    $module_path = \Drupal::service('extension.list.module')->getPath($module);
+    $info = \Drupal::service('extension.list.module')->getExtensionInfo($module);
+    if (isset($info['ckeditor5-stylesheets']) && $info['ckeditor5-stylesheets'] !== FALSE) {
+      $css = $info['ckeditor5-stylesheets'];
+      foreach ($css as $key => $url) {
+        // CSS URL is external or relative to Drupal root.
+        if (UrlHelper::isExternal($url) || $url[0] === '/') {
+          $css[$key] = $url;
+        }
+        // CSS URL is relative to theme.
+        else {
+          $css[$key] = '/' . $module_path . '/' . $url;
+        }
+      }
+    }
+    $libraries['internal.drupal.ckeditor5.stylesheets'] = [
+      'css' => [
+        'theme' => array_fill_keys(array_values($css), []),
+      ],
+    ];
+  }
+}
+
+/**
+ * Implements hook_editor_js_settings_alter().
+ */
+function ckeditor5_fe_color_config_example_editor_js_settings_alter(array &$settings) {
+  // CKEditor 5 FeColor plugin colors configuration.
+  // Add custom colors or modify existing ones for the 'basic_html' text format.
+  $settings['editor']['formats']['basic_html']['editorSettings']['config']['fecolor']['colors'] = __ckeditor5_fe_color_config_example_colors();
+}
+
+/**
+ * Implements hook_ckeditor5_plugin_info_alter().
+ */
+function ckeditor5_fe_color_config_example_ckeditor5_plugin_info_alter(array &$plugin_definitions): void {
+  // Add all color classes to the CKEditor 5 FeColor plugin elements configuration.
+  if (isset($plugin_definitions['ckeditor5_fe_color_fecolor'])) {
+    assert($plugin_definitions['ckeditor5_fe_color_fecolor'] instanceof CKEditor5PluginDefinition);
+    $fecolor_plugin_definition = $plugin_definitions['ckeditor5_fe_color_fecolor']->toArray();
+    $fecolor_plugin_definition['drupal']['elements'][] = '<span class="' . join(' ', __ckeditor5_fe_color_config_example_colors_classes()) . '">';
+    $plugin_definitions['ckeditor5_fe_color_fecolor'] = new CKEditor5PluginDefinition($fecolor_plugin_definition);
+  }
+}
+
+function __ckeditor5_fe_color_config_example_colors(): array {
+  return [
+    [
+      "label" => "Black (color-black)",
+      "class" => "color-black",
+      "color" => "var(--color-black)",        // #000000
+    ],
+    [
+      "label" => "White (color-white)",
+      "class" => "color-white",
+      "color" => "var(--color-white)",        // #ffffff
+      "options" => [
+        "hasBorder" => TRUE
+      ],
+    ],
+    // Add more custom colors here.
+    [
+      "label" => "Red (color-red)",
+      "class" => "color-red",
+      "color" => "var(--color-red)",          // #ff0000
+    ],
+    [
+      "label" => "Green (color-green)",
+      "class" => "color-green",
+      "color" => "var(--color-green)",        // #00ff00
+    ],
+  ];
+}
+
+function __ckeditor5_fe_color_config_example_colors_classes(): array {
+  return array_column(__ckeditor5_fe_color_config_example_colors(), 'class');
+}

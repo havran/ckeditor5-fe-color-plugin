@@ -1,0 +1,10 @@
+name: 'CKEditor5 FeColor Config Example'
+type: module
+description: 'Example configuration module for CKEditor5 FE Color plugin.'
+core_version_requirement: ^10 || ^11
+package: 'CKEditor 5 Custom'
+dependencies:
+  - ckeditor5_fe_color
+
+ckeditor5-stylesheets:
+  - css/ckeditor5.css                                   # Your custom styles for CKEditor 5
