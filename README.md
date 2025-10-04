@@ -190,6 +190,15 @@ Example `css/ckeditor5.css` file:
 }
 
 /* Example how provide CKEditor 5 content styles */
+
+span.color-black {
+  color: var(--color-black);
+}
+
+span.color-white {
+  color: var(--color-white);
+}
+
 .ck-content h1 {
   padding-bottom: 16px;
 }
